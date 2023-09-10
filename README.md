@@ -1,5 +1,5 @@
 # OpenAIInNetCore
-Samples of OpenAI APIs in Net Core
+Samples of OpenAI APIs in Net Core. More samples coming soon...
 
 # Samples as of Now
 ## 1. Instant BedTime Story Generator
