@@ -1,6 +1,7 @@
 ﻿using InstantBedtimeStory.Infrastructure.Hubs;
 using Microsoft.AspNetCore.SignalR;
 using OpenAI_API;
+using OpenAI_API.Models;
 
 namespace InstantBedtimeStory.Services
 {
@@ -20,11 +21,15 @@ namespace InstantBedtimeStory.Services
             Task.Run(async () =>
             {
                 var gptConversation = _apiClient.Chat.CreateConversation();
+                gptConversation.Model = Model.GPT4;
+                gptConversation.RequestParameters.MaxTokens = 500;
+
 
                 /// give instruction as System
                 gptConversation.AppendSystemMessage("User enters a topic and you need to respond with a short bed time story on that topic. Story is for kids so content needs to be appropriate for kids.");
                 // now let's give a topic name
                 gptConversation.AppendUserInput(topic);
+
                 await foreach (var message in gptConversation.StreamResponseEnumerableFromChatbotAsync())
                 {
                     await _hubContext.Clients.All.SendAsync("gptresponse", message);
