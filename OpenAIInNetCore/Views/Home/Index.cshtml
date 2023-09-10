@@ -1,0 +1,45 @@
+﻿@section styles{
+    <link href="~/css/bedtimestory.css" rel="stylesheet" />
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center" style="font-size:20px;">
+                        <strong>BedTime Story Generator</strong>
+                    </div>
+                    <form id="userInputForm">
+                        <div class="form-group">
+                            <label for="userInput">Enter Topic:</label>
+                            <input class="form-control col-md-6" id="userInput" required />
+                        </div>
+                        <button id="getStoryBtn" type="submit" class="btn btn-primary">Get Response</button>
+                    </form>
+                    <div class="mt-3" id="responseSection">
+                        <label>Response from GPT:</label>
+                        <p id="gptResponse"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/bedtimestory.js"></script>
+    <script>
+        var connection = new signalR.HubConnectionBuilder()
+            .withUrl("/GptResponseHub")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+        connection.on("gptresponse",
+            (message) => {
+                document.getElementById("gptResponse").textContent += message;
+            });
+        connection.start()
+            .catch(err => console.error(err.toString()));
+    </script>
+}
