@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/QnAWithOpenAIEmbedding/Infrastructures/DataFiles/winter_olympics_2022.csv
