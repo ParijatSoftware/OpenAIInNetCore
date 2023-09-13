@@ -17,3 +17,6 @@ In this sample application, you can input your own [vector] data as well and do 
 Notes:
 - Update OpenAI Api key in `appsettings.json`
 - In `Infrastructure/DataFiles` folder, add Winter 2022 Olympics data file (download it from [here](https://cdn.openai.com/API/examples/data/winter_olympics_2022.csv)).
+
+![Open AI Sample - QnA using Embedding](https://github.com/ParijatSoftware/OpenAIInNetCore/assets/9824189/d0931256-4ddc-40a6-828d-183f424a2335)
+
