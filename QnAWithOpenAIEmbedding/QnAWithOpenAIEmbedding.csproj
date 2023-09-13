@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Infrastructures\DataFiles\**" />
-    <Content Remove="Infrastructures\DataFiles\**" />
-    <EmbeddedResource Remove="Infrastructures\DataFiles\**" />
-    <None Remove="Infrastructures\DataFiles\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="OpenAI" Version="1.7.2" />
